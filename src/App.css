@@ -1,0 +1,41 @@
+#bg-img{
+  background-image: url("../public/image/Video-bg-img.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+#homeContainer{
+  box-shadow: 4px 4px 2px rgb(6, 44, 100);
+  background-color: rgb(62, 3, 172);
+  width: 400px;
+  height: 400px;
+}
+#admin-login{
+  box-shadow: 4px 4px 2px rgb(6, 44, 100);
+  background-color: rgb(237, 240, 243);
+  width: 400px;
+  height: 300px;
+  margin-top: 30px;
+}
+#admin-edit-video{
+  box-shadow: 4px 4px 2px rgb(6, 44, 100);
+  background-color: rgb(237, 240, 243);
+  width: 400px;
+  height: 490px;
+  margin-top: 30px;
+  margin: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  color: black;
+}
+#tblBody{
+  height: 100vh;
+  overflow: auto;
+}
+#tblHead{
+  position: sticky;
+  top: 45px;
+}
+#login-form:hover{
+  box-shadow: 2px 4px 2px rgb(39, 39, 39);
+  cursor: pointer;
+}
