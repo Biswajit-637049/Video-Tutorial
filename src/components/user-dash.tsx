@@ -43,21 +43,27 @@ export function UserDash() {
             setVideos(result || []);
         }
     }
+    // like
     function likeClick(video_id: number) {
-        const updatedLike = videos?.map(video =>
-            video.video_id === video_id
-                ? { ...video, likes: video.likes + 1 }
-                : video
-        );
-        setVideos(updatedLike);
+        axios.put(`http://127.0.0.1:4040/like-video/${video_id}`).then(() => {
+            const updatedLike = videos?.map(video =>
+                video.video_id === video_id
+                    ? { ...video, likes: video.likes + 1 }
+                    : video
+            );
+            setVideos(updatedLike);
+        });
     }
+    // dislike
     function disLikeClick(video_id: number) {
-        const updatedDisLike = videos?.map(video =>
-            video.video_id === video_id
-                ? { ...video, dislikes: video.dislikes + 1 }
-                : video
-        );
-        setVideos(updatedDisLike);
+        axios.put(`http://127.0.0.1:4040/dislike-video/${video_id}`).then(() => {
+            const updatedDisLike = videos?.map(video =>
+                video.video_id === video_id
+                    ? { ...video, dislikes: video.dislikes + 1 }
+                    : video
+            );
+            setVideos(updatedDisLike);
+        });
     }
     function AddToWatchLaterClick(video: VideoContract) {
         dispatch(addToSaveList(video));  // dispatch add into data in addToSaveList

@@ -119,7 +119,31 @@ app.put("/edit-video/:id",(req,res)=>{
             res.send();
         });
     });
-})
+});
+app.put("/like-video/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    mongoClient.connect(conString).then(clientObj => {
+        const database = clientObj.db("video-tutorial");
+        database.collection("videos").updateOne(
+            { video_id: id },
+            { $inc: { likes: 1 } }  // increment likes by 1 ($inc is increment operator of mongodb)
+        ).then(() => {
+            res.send({ message: "Like updated" });
+        });
+    });
+});
+app.put("/dislike-video/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    mongoClient.connect(conString).then(clientObj => {
+        const database = clientObj.db("video-tutorial");
+        database.collection("videos").updateOne(
+            { video_id: id },
+            { $inc: { dislikes: 1 } }
+        ).then(() => {
+            res.send({ message: "Dislike updated" });
+        });
+    });
+});
  app.delete("/delete-video/:id",(req,res)=>{
     var id=parseInt(req.params.id);
     mongoClient.connect(conString).then(clientObj=>{
